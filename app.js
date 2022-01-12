@@ -1,19 +1,19 @@
-var form =document.querySelector(".main-body");
-var inputs=document.querySelectorAll(".inputs");
-var outputDiv=document.querySelector(".main-output");
-var outputMsg=document.querySelector("#main-msg");
-var outputImg=document.querySelector("#image-show");
-var body=document.querySelector("body");
-var flag=0;
-function formResponseHandler(event){
+const form =document.querySelector(".main-body");
+const inputs=document.querySelectorAll(".inputs");
+const outputDiv=document.querySelector(".main-output");
+const outputMsg=document.querySelector("#main-msg");
+const outputImg=document.querySelector("#image-show");
+const body=document.querySelector("body");
+const flag=0;
+const formResponseHandler=(event)=>{
     event.preventDefault();
-    var cost=Number(inputs[0].value);
-    var qty=Number(inputs[1].value);
-    var current=Number(inputs[2].value);
+    let cost=Number(inputs[0].value);
+    let qty=Number(inputs[1].value);
+    let current=Number(inputs[2].value);
     calculator(cost,qty,current);
 }
 
-function show(stats,result,resPer){
+const show=(stats,result,resPer)=>{
     if(stats===1){
         outputDiv.style.display="block";
         outputMsg.style.color='#d62828';
@@ -28,23 +28,23 @@ function show(stats,result,resPer){
 
 }
 
-function calculator(cp,number,sp){
+const calculator=(cp,number,sp)=>{
     if(cp>sp){
-        var loss=cp-sp
-        var totalLoss=loss*number;
-        var lossInPercent=(loss*100)/cp;
+        let loss=cp-sp
+        let totalLoss=loss*number;
+        let lossInPercent=(loss*100)/cp;
         lossInPercent=lossInPercent.toFixed(2);
         flag=1;
         show(flag,totalLoss,lossInPercent);
     }else if(sp>cp){
-        var profit=sp-cp;
-        var totalProfit=profit*number;
-        var profitInPercent=(profit*100)/cp;
+        let profit=sp-cp;
+        let totalProfit=profit*number;
+        let profitInPercent=(profit*100)/cp;
         profitInPercent=profitInPercent.toFixed(2);
         flag=2;
         show(flag,totalProfit,profitInPercent);
     }else if(sp===cp){
-        var noReturn=sp-cp;
+        let noReturn=sp-cp;
         outputDiv.style.display="block";
         outputMsg.style.color='#ffff';
         outputMsg.innerText=` In this scenario no profit or loss has been received.`
